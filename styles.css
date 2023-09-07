@@ -1,0 +1,33 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  // outline: auto;
+}
+
+body {
+  background-color: hsl(0, 0%, 98%);
+  color: hsl(0, 0%, 0%);
+  max-width: 60%;
+  margin: 0 auto;
+}
+
+.red {
+  // background-color: red;
+  border: 4px solid red;
+}
+
+.yellow {
+  // background-color: yellow;
+  border: 4px solid yellow;
+}
+
+.blue {
+  // background-color: blue;
+  border: 4px solid blue;
+}
+
+.green {
+  // background-color: green;
+  border: 4px solid green;
+}
