@@ -1,8 +1,3 @@
-// CONSTRUCT
-
-// EVENT
-
-fetch('https://dog.ceo/api/breeds/list/all');
 // FETCH is not just going to return the data that lives at this url
 // instead the fetch function is going to return a PROMISE
 
@@ -10,7 +5,8 @@ fetch('https://dog.ceo/api/breeds/list/all');
 // it's not going to block any of our other code from running
 
 /* -------------------------------------------------------------------------- */
-//OLD WAY
+// PROMISE - OLD WAY
+/* -------------------------------------------------------------------------- */
 
 // PROMISE has a METHOD named THEN()
 // we can give THEN() a FUNCTION as ARGUMENT
@@ -28,8 +24,8 @@ fetch('https://dog.ceo/api/breeds/list/all')
 // response is connection data (HEADERS) => we have to now pull out actual data BODY
 
 /* -------------------------------------------------------------------------- */
-
-//NEW WAY
+// PROMISE NEW WAY
+/* -------------------------------------------------------------------------- */
 // we need to be inside ASYNCHRONOUS FUNCTION
 
 async function start() {
@@ -38,6 +34,24 @@ async function start() {
   console.log(data);
 }
 start();
+
 // code inside ASYNC FUNCTION won't be run until AWAIT --> FETCH's PROMISE RETURNS OR RESOLVE
+// follow by code outside the function won't wait and will be execute
 
 // JSON = JAVA SCRIPT OBJECT NOTATION = response.json() =  extract JSON from RESPONSE (give me an JS OBJECT)
+
+/* -------------------------------------------------------------------------- */
+
+Object.keys(ourObject);
+// returns ARRAY from OBJECT KEYS
+
+/* -------------------------------------------------------------------------- */
+
+ARRAY.join(''); // makes STRING LIST from an array with CUSTOM SEPARATOR
+
+let myArray = ['Ann', 'Danil', 'Luna'];
+console.log(myArray);
+
+console.log(myArray.join(' '));
+
+/* -------------------------------------------------------------------------- */
