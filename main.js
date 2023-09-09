@@ -36,5 +36,10 @@ async function loadByBreed(clickedBreed) {
 
 function createSlideShow(imagesObject) {
   console.log(imagesObject);
-  imagesObject.map(() => {});
+  imagesObject.map((singleImage) => {
+    slideShow.insertAdjacentHTML(
+      'beforeend',
+      `<img src="${singleImage}" alt=""><br>`
+    );
+  });
 }

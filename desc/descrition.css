@@ -1,0 +1,25 @@
+// PLACE IMAGE IN HTML VIA CSS BACKGROUND-IMAGE
+// BImg is placed in HTML via inlie style
+
+HTML ELEMENT {
+  background-image: url('https://images.dog.ceo/breeds/appenzeller/n02107908_1030.jpg');
+}
+
+.slideshow {
+  position: relative;
+
+  .slide {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+  }
+}
+/* 
+BGI-size 
+- contain - Resize the background image to make sure the image is fully visible
+*/
