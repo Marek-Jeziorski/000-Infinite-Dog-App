@@ -55,3 +55,23 @@ console.log(myArray);
 console.log(myArray.join(' '));
 
 /* -------------------------------------------------------------------------- */
+// DISPLAYING IMAGES IN SLIDE SHOW
+// Markup <div> x 3 with background-image url's from [IMAGES]
+// We could do it by adding <img> but
+// to take up this full available space and i want the image to scale to fit
+// inside this not just horizontally but also vertically  (background-image: contain )
+
+function createSlideShow(images) {
+  document.getElementById(
+    'slideshow'
+  ).innerHTML = `<div class="slide" style="background-image: url('${images[0]}');"></div>
+  <div class="slide" style="background-image: url('${images[1]}');"></div>`;
+}
+
+/* -------------------------------------------------------------------------- */
+/* css to write a selector that says the second to last  
+   slide div should be the one that's visible
+   so then every three seconds we add the new photo to the end
+   and remove oldest
+
+*/
