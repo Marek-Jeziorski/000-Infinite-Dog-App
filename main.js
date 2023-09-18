@@ -2,9 +2,13 @@ let nextSlideTimer;
 let removeFirstSlideTimer;
 
 async function getAllBreedsList() {
-  const response = await fetch('https://dog.ceo/api/breeds/list/all');
-  const data = await response.json();
-  createBreedListMarkup(data.message);
+  try {
+    const response = await fetch('https://dog.ceo/api/breeds/list/all');
+    const data = await response.json();
+    createBreedListMarkup(data.message);
+  } catch (e) {
+    console.log('There was a problem ' + e);
+  }
 }
 getAllBreedsList();
 
@@ -42,7 +46,6 @@ function createSlideShow(images) {
   if (images.length > 1) {
     slideShow.innerHTML = `<div class="slide" style="background-image: url('${images[0]}');"></div>
   <div class="slide" style="background-image: url('${images[1]}');"></div>`;
-
     currentPosition += 2;
     if (images.length == 2) currentPosition = 0;
     nextSlideTimer = setInterval(nextSlide, 3000);

@@ -75,3 +75,48 @@ function createSlideShow(images) {
    and remove oldest
 
 */
+
+/* -------------------------------------------------------------------------- */
+// CREATE SLIDE SHOW FUNCTION
+/* -------------------------------------------------------------------------- */
+
+function createSlideShow(images) {
+  /* -------------------------------------------------------------------------- */
+  // RESET TIMERS AND COUNTS, MAP <ELEM>, INIT VARIABLES
+
+  clearInterval(nextSlideTimer);
+  clearTimeout(removeFirstSlideTimer);
+  let currentPosition = 0;
+  let slideShow = document.getElementById('slideshow');
+
+  /* -------------------------------------------------------------------------- */
+  //  MARKUP <DIV-IMAGES> , EDGE-LOGIC, COUNT INIT, EXE-INTERVAL(ADD NEXT SLIDE)
+
+  if (images.length > 1) {
+    slideShow.innerHTML = `<div class="slide" style="background-image: url('${images[0]}');"></div> <div class="slide" style="background-image: url('${images[1]}');"></div>`;
+    currentPosition += 2;
+    if (images.length == 2) currentPosition = 0;
+    nextSlideTimer = setInterval(nextSlide, 3000);
+  } else {
+    slideShow.innerHTML = `<div class="slide" style="background-image: url('${images[0]}');"></div>
+  <div class="slide" ></div>`;
+  }
+
+  /* -------------------------------------------------------------------------- */
+  // INTERVAL (ADD NEXT & REMOVE FIRST SLIDE, COUNT UP)
+  function nextSlide() {
+    slideShow.insertAdjacentHTML(
+      'beforeend',
+      `<div class="slide" style="background-image: url('${images[currentPosition]}');"></div>`
+    );
+    removeFirstSlideTimer = setTimeout(() => {
+      document.querySelector('.slide').remove();
+    }, 1000);
+
+    if (currentPosition + 1 >= images.length) {
+      currentPosition = 0;
+    } else {
+      currentPosition++;
+    }
+  }
+}
