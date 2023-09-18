@@ -1,3 +1,6 @@
+let nextSlideTimer;
+let removeFirstSlideTimer;
+
 async function getAllBreedsList() {
   const response = await fetch('https://dog.ceo/api/breeds/list/all');
   const data = await response.json();
@@ -30,30 +33,37 @@ async function loadByBreed(selectedBreed) {
   }
 }
 
-function createSlideShow(breedImages) {
-  let currentImage = 0;
+function createSlideShow(images) {
+  clearInterval(nextSlideTimer);
+  clearTimeout(removeFirstSlideTimer);
+  let currentPosition = 0;
   let slideShow = document.getElementById('slideshow');
-  slideShow.innerHTML = `<div class="slide" style="background-image: url('${breedImages[0]}');"></div>
-  <div class="slide" style="background-image: url('${breedImages[1]}');"></div>`;
 
-  currentImage += 2;
-  setInterval(nextSlide, 3000);
+  if (images.length > 1) {
+    slideShow.innerHTML = `<div class="slide" style="background-image: url('${images[0]}');"></div>
+  <div class="slide" style="background-image: url('${images[1]}');"></div>`;
+
+    currentPosition += 2;
+    if (images.length == 2) currentPosition = 0;
+    nextSlideTimer = setInterval(nextSlide, 3000);
+  } else {
+    slideShow.innerHTML = `<div class="slide" style="background-image: url('${images[0]}');"></div>
+  <div class="slide" ></div>`;
+  }
 
   function nextSlide() {
-    console.log('next slide after 3sec');
     slideShow.insertAdjacentHTML(
       'beforeend',
-      `<div class="slide" style="background-image: url('${breedImages[currentImage]}');"></div>`
+      `<div class="slide" style="background-image: url('${images[currentPosition]}');"></div>`
     );
-    setTimeout(() => {
+    removeFirstSlideTimer = setTimeout(() => {
       document.querySelector('.slide').remove();
-      console.log('remove slide after 1sec');
     }, 1000);
 
-    if (currentImage + 1 >= breedImages.length) {
-      currentImage = 0;
+    if (currentPosition + 1 >= images.length) {
+      currentPosition = 0;
     } else {
-      currentImage++;
+      currentPosition++;
     }
   }
 }

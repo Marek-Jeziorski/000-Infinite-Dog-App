@@ -35,6 +35,7 @@ body {
   position: relative;
   flex: 1;
   background-color: hsl(0, 0%, 31%);
+  overflow: hidden;
 
   .slide {
     position: absolute;
